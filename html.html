@@ -13,8 +13,14 @@
     <script>
         let tg = window.Telegram.WebApp;
         let buy = document.getElementById('cl');
+        tg.expand();
 
         buy.addEventListener("click", () => {
+            let mes = document.getElementById('inp').value;
+            let data = {
+                input: mes
+            }
+            tg.sendData(JSON.stringify(data));
             tg.close();
         });
     </script>
