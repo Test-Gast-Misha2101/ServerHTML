@@ -1,0 +1,32 @@
+.error {
+    color: rgba(255, 0, 51, 0.74);
+}
+.cen {
+    display: flex;
+    padding: 5px;
+}
+body {
+    display: flex;
+    margin-bottom: 5px;
+}
+h3, h2 {
+    display: flex;
+    justify-content: center;
+}
+button, input {
+    display: flex;
+    margin: 0 auto;
+}
+.box {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    background-color: rgb(214, 214, 214);
+    border-radius: 20px;
+    margin: 0 auto;
+
+    align-content: center;
+
+    display: block;
+    border: 5px solid rgb(129, 129, 129);
+}
