@@ -14,10 +14,12 @@ body {
 h3, h2 {
     display: flex;
     justify-content: center;
+    color: black;
 }
 button, input {
     display: flex;
     margin: 0 auto;
+    color: black;
 }
 .box {
     display: flex;
