@@ -5,25 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title> <!--Название сайта-->
     <style>
+        .cen {
+            display: flex;
+            margin-bottom: 5px;
+        }
         body {
+            display: flex;
+            margin-bottom: 5px;
             color: var(--tg-theme-text-color); /* Установка цвета текста из telegram */
             background: var(--tg-theme-bg-color); /* Установка цвета фона из telegram */
         }
     </style>
 </head>
 <body>
-    <h1>Test_Gast_cs</h1>
-    <input type="text", id="inp_name"> <!--Поле ввода-->
-    <input type="text", id="inp_phone">
-    <input type="text", id="inp_email">
-    <button id="cl">click</button>
+    <div id="Menu" style="display: block;">
+        <button onclick='registr()'>Зарегистрироваться</button>
+    </div>
+    <div id="reg" style="display: none;">
+        <h1>Регистрация</h1>
+        <input type="text" class="cen" id="inp_name"> <!--Поле ввода-->
+        <input type="text" class="cen" id="inp_phone">
+        <input type="text" class="cen" id="inp_email">
+        <button onclick="close_web()">click</button>
+    </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключение функций telegram-->
     <script>
         let tg = window.Telegram.WebApp; // Телеграмм функции
-        let buy = document.getElementById('cl'); // Получение элемента с id = 'cl'
         tg.expand(); // Открыть на весь экран
 
-        buy.addEventListener("click", () => {
+        function registr() {
+            document.getElementById('Menu').style.display = 'none';
+            document.getElementById('reg').style.display = 'block';
+        }
+
+        function close_web() {
             let inp_name = document.getElementById('inp_name').value; // Получение данных из поле ввода
             let inp_phone = document.getElementById('inp_name').value;
             let inp_email = document.getElementById('inp_name').value;
@@ -34,7 +49,7 @@
             } // json
             tg.sendData(JSON.stringify(data)); // переводим в 1 строку
             tg.close(); // Закрываем telegram
-        }); // Обработка кнопки
+        } // Обработка кнопки
     </script>
 </body>
 </html>
