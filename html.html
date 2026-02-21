@@ -3,32 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Test</title> <!--Название сайта-->
+    <style>
+        body {
+            color: var(--tg-theme-text-color); /* Установка цвета текста из telegram */
+            background: var(--tg-theme-bg-color); /* Установка цвета фона из telegram */
+        }
+    </style>
 </head>
 <body>
     <h1>Test_Gast_cs</h1>
-    <input type="text", id="inp_name">
+    <input type="text", id="inp_name"> <!--Поле ввода-->
     <input type="text", id="inp_phone">
     <input type="text", id="inp_email">
     <button id="cl">click</button>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключение функций telegram-->
     <script>
-        let tg = window.Telegram.WebApp;
-        let buy = document.getElementById('cl');
-        tg.expand();
+        let tg = window.Telegram.WebApp; // Телеграмм функции
+        let buy = document.getElementById('cl'); // Получение элемента с id = 'cl'
+        tg.expand(); // Открыть на весь экран
 
         buy.addEventListener("click", () => {
-            let inp_name = document.getElementById('inp_name').value;
+            let inp_name = document.getElementById('inp_name').value; // Получение данных из поле ввода
             let inp_phone = document.getElementById('inp_name').value;
             let inp_email = document.getElementById('inp_name').value;
             let data = {
                 inp_name: inp_name,
                 inp_phone: inp_phone,
                 inp_email: inp_email
-            }
-            tg.sendData(JSON.stringify(data));
-            tg.close();
-        });
+            } // json
+            tg.sendData(JSON.stringify(data)); // переводим в 1 строку
+            tg.close(); // Закрываем telegram
+        }); // Обработка кнопки
     </script>
 </body>
 </html>
