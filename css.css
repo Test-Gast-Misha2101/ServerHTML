@@ -9,7 +9,6 @@
 body {
     display: flex;
     margin-bottom: 5px;
-    color: var(--tg-theme-bg-color);
     background: var(--tg-theme-bg-color);
 }
 h3, h2 {
