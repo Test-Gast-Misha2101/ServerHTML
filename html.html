@@ -6,75 +6,91 @@
     <title>Test</title> <!--Название сайта-->
     <style>
         .error {
-            color: rgba(255, 0, 51, 0.548);
+            color: rgba(255, 0, 51, 0.74);
         }
         .cen {
             display: flex;
-            margin-bottom: 5px;
+            padding: 5px;
         }
         body {
             display: flex;
             margin-bottom: 5px;
-            color: var(--tg-theme-text-color); /* Установка цвета текста из telegram */
-            background: var(--tg-theme-bg-color); /* Установка цвета фона из telegram */
-            max-width: 400px;  /* Ширина не больше 400px */
-            max-height: 600px;   /* Высота не больше 600px */
-            height: 80vh;        /* Высота — 80% от высоты экрана (можно менять) */
-            overflow-y: auto;    /* Добавляем скролл, если контент не помещается */
-            border-radius: 12px;
+        }
+        h3, h2 {
+            display: flex;
+            justify-content: center;
+        }
+        button, input {
+            display: flex;
+            margin: 0 auto;
+        }
+        .box {
+            display: flex;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(214, 214, 214);
+            border-radius: 20px;
+            margin: 0 auto;
+
+            align-content: center;
+
+            display: block;
+            border: 5px solid rgb(129, 129, 129);
         }
     </style>
 </head>
 <body>
-    <div id="Menu" style="display: block;">
-        <button onclick='registr()'>Зарегистрироваться</button>
+    <div class="box">
+        <div id="Menu" style="display: block;" class="cen">
+            <button onclick='registr()'>Зарегистрироваться</button>
+        </div>
+        <div id="reg" style="display: none;" class="cen">
+            <h2>Регистрация</h2>
+            <input type="text" id="inp_name"> <!--Поле ввода-->
+            <input type="date" id="inp_date">
+            <input type="email" id="inp_email">
+            <button onclick="close_web()">click</button>
+            <h3 class="error" id="err"></h3>
+        </div>
+        <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключение функций telegram-->
+        <script>
+            let tg = window.Telegram.WebApp; // Телеграмм функции
+            tg.expand(); // Открыть на весь экран
+
+            function registr() {
+                document.getElementById('Menu').style.display = 'none';
+                document.getElementById('reg').style.display = 'block';
+            }
+
+            function close_web() {
+                let pr = document.getElementById('inp_name').value;
+                if(pr == '' || pr.includes(' ')) {
+                    document.getElementById('err').textContent = 'Error name;';
+                    return;
+                }
+                let pr2 = document.getElementById('inp_date').value;
+                if(pr2 == '') {
+                    document.getElementById('err').textContent = 'Error date;';
+                    return;
+                }
+                let pr3 = document.getElementById('inp_email').value;
+                if(pr3 == '' || pr3 == '@mail.ru' || pr3 == '@gmail.com' || !(pr3.endsWith('@gmail.com') || pr3.endsWith('@mail.ru'))) {
+                    document.getElementById('err').textContent = 'Error email;';
+                    return;
+                }
+
+                let inp_name = document.getElementById('inp_name').value; // Получение данных из поле ввода
+                let inp_date = document.getElementById('inp_date').value;
+                let inp_email = document.getElementById('inp_email').value;
+                let data = {
+                    inp_name: inp_name,
+                    inp_date: inp_date,
+                    inp_email: inp_email
+                }; // json
+                tg.sendData(JSON.stringify(data)); // переводим в 1 строку
+                tg.close(); // Закрываем telegram
+            } // Обработка кнопки
+        </script>
     </div>
-    <div id="reg" style="display: none;">
-        <h1>Регистрация</h1>
-        <input type="text" class="cen" id="inp_name"> <!--Поле ввода-->
-        <input type="date" class="cen" id="inp_date">
-        <input type="email" class="cen" id="inp_email">
-        <button onclick="close_web()" class="cen">click</button>
-        <h6 class="error" id="err"></h6>
-    </div>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключение функций telegram-->
-    <script>
-        let tg = window.Telegram.WebApp; // Телеграмм функции
-        tg.expand(); // Открыть на весь экран
-
-        function registr() {
-            document.getElementById('Menu').style.display = 'none';
-            document.getElementById('reg').style.display = 'block';
-        }
-
-        function close_web() {
-            let pr = document.getElementById('inp_name').value;
-            if(pr == '' || pr.includes(' ')) {
-                document.getElementById('err').textContent = 'Error name;';
-                return;
-            }
-            let pr2 = document.getElementById('inp_date').value;
-            if(pr2 == '') {
-                document.getElementById('err').textContent = 'Error date;';
-                return;
-            }
-            let pr3 = document.getElementById('inp_email').value;
-            if(pr3 == '' || pr3 == '@mail.ru' || pr3 == '@gmail.com' || !(pr3.endsWith('@gmail.com') || pr3.endsWith('@mail.ru'))) {
-                document.getElementById('err').textContent = 'Error email;';
-                return;
-            }
-
-            let inp_name = document.getElementById('inp_name').value; // Получение данных из поле ввода
-            let inp_date = document.getElementById('inp_date').value;
-            let inp_email = document.getElementById('inp_email').value;
-            let data = {
-                inp_name: inp_name,
-                inp_date: inp_date,
-                inp_email: inp_email
-            }; // json
-            tg.sendData(JSON.stringify(data)); // переводим в 1 строку
-            tg.close(); // Закрываем telegram
-        } // Обработка кнопки
-    </script>
 </body>
 </html>
