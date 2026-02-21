@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title> <!--Название сайта-->
     <style>
+        .error {
+            background-color: rgba(255, 0, 51, 0.548);
+        }
         .cen {
             display: flex;
             margin-bottom: 5px;
@@ -26,7 +29,8 @@
         <input type="text" class="cen" id="inp_name"> <!--Поле ввода-->
         <input type="text" class="cen" id="inp_phone">
         <input type="text" class="cen" id="inp_email">
-        <button onclick="close_web()">click</button>
+        <button onclick="close_web()" class="cen">click</button>
+        <h6 class="error" id="err"></h6>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключение функций telegram-->
     <script>
@@ -39,14 +43,27 @@
         }
 
         function close_web() {
+            let pr = document.getElementById('input_name').value;
+            if(pr == '' || pr.includes(' ')) {
+                return;
+            }
+            let pr2 = document.getElementById('input_phone').value;
+            if(pr2 == '' || !pr2.includes('+')) {
+                return;
+            }
+            let pr3 = document.getElementById('input_email').value;
+            if(pr3 == '' || !pr3.includes('@') || !pr3.includes('.')) {
+                return;
+            }
+
             let inp_name = document.getElementById('inp_name').value; // Получение данных из поле ввода
-            let inp_phone = document.getElementById('inp_name').value;
-            let inp_email = document.getElementById('inp_name').value;
+            let inp_phone = document.getElementById('inp_phone').value;
+            let inp_email = document.getElementById('inp_email').value;
             let data = {
                 inp_name: inp_name,
                 inp_phone: inp_phone,
                 inp_email: inp_email
-            } // json
+            }; // json
             tg.sendData(JSON.stringify(data)); // переводим в 1 строку
             tg.close(); // Закрываем telegram
         } // Обработка кнопки
