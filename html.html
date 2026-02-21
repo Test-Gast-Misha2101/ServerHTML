@@ -6,7 +6,7 @@
     <title>Test</title> <!--Название сайта-->
     <style>
         .error {
-            background-color: rgba(255, 0, 51, 0.548);
+            color: rgba(255, 0, 51, 0.548);
         }
         .cen {
             display: flex;
@@ -32,10 +32,10 @@
     <div id="reg" style="display: none;">
         <h1>Регистрация</h1>
         <input type="text" class="cen" id="inp_name"> <!--Поле ввода-->
-        <input type="text" class="cen" id="inp_phone">
-        <input type="text" class="cen" id="inp_email">
+        <input type="date" class="cen" id="inp_date">
+        <input type="email" class="cen" id="inp_email">
         <button onclick="close_web()" class="cen">click</button>
-        <h6 class="error" id="err">t</h6>
+        <h6 class="error" id="err"></h6>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключение функций telegram-->
     <script>
@@ -53,23 +53,23 @@
                 document.getElementById('err').textContent = 'Error name;';
                 return;
             }
-            let pr2 = document.getElementById('inp_phone').value;
-            if(pr2 == '' || !pr2.includes('+')) {
-                document.getElementById('err').textContent = 'Error phone;';
+            let pr2 = document.getElementById('inp_date').value;
+            if(pr2 == '') {
+                document.getElementById('err').textContent = 'Error date;';
                 return;
             }
             let pr3 = document.getElementById('inp_email').value;
-            if(pr3 == '' || !pr3.includes('@') || !pr3.includes('.')) {
+            if(pr3 == '' || pr3 == '@mail.ru' || pr3 == '@gmail.com' || !(pr3.endsWith('@gmail.com') || pr3.endsWith('@mail.ru'))) {
                 document.getElementById('err').textContent = 'Error email;';
                 return;
             }
 
             let inp_name = document.getElementById('inp_name').value; // Получение данных из поле ввода
-            let inp_phone = document.getElementById('inp_phone').value;
+            let inp_date = document.getElementById('inp_date').value;
             let inp_email = document.getElementById('inp_email').value;
             let data = {
                 inp_name: inp_name,
-                inp_phone: inp_phone,
+                inp_date: inp_date,
                 inp_email: inp_email
             }; // json
             tg.sendData(JSON.stringify(data)); // переводим в 1 строку
