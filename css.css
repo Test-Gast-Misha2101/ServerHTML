@@ -11,7 +11,12 @@ body {
     margin-bottom: 5px;
     background: var(--tg-theme-bg-color);
 }
-h3, h2 {
+h3 {
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+h2 {
     display: flex;
     justify-content: center;
     color: black;
