@@ -8,6 +8,7 @@
 body {
     display: flex;
     margin-bottom: 5px;
+    background: var(--tg-theme-bg-color);
 }
 h3, h2 {
     display: flex;
