@@ -7,7 +7,9 @@
 </head>
 <body>
     <h1>Test_Gast_cs</h1>
-    <input type="text", id="inp">
+    <input type="text", id="inp_name">
+    <input type="text", id="inp_phone">
+    <input type="text", id="inp_email">
     <button id="cl">click</button>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
@@ -16,9 +18,13 @@
         tg.expand();
 
         buy.addEventListener("click", () => {
-            let mes = document.getElementById('inp').value;
+            let inp_name = document.getElementById('inp_name').value;
+            let inp_phone = document.getElementById('inp_name').value;
+            let inp_email = document.getElementById('inp_name').value;
             let data = {
-                input: mes
+                inp_name: inp_name,
+                inp_phone: inp_phone,
+                inp_email: inp_email
             }
             tg.sendData(JSON.stringify(data));
             tg.close();
