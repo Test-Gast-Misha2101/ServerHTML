@@ -50,17 +50,17 @@
         function close_web() {
             let pr = document.getElementById('inp_name').value;
             if(pr == '' || pr.includes(' ')) {
-                document.getElementById('err').value = 'Error name;';
+                document.getElementById('err').textContent = 'Error name;';
                 return;
             }
             let pr2 = document.getElementById('inp_phone').value;
             if(pr2 == '' || !pr2.includes('+')) {
-                document.getElementById('err').value = 'Error phone;';
+                document.getElementById('err').textContent = 'Error phone;';
                 return;
             }
             let pr3 = document.getElementById('inp_email').value;
             if(pr3 == '' || !pr3.includes('@') || !pr3.includes('.')) {
-                document.getElementById('err').value = 'Error email;';
+                document.getElementById('err').textContent = 'Error email;';
                 return;
             }
 
