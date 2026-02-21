@@ -17,6 +17,11 @@
             margin-bottom: 5px;
             color: var(--tg-theme-text-color); /* Установка цвета текста из telegram */
             background: var(--tg-theme-bg-color); /* Установка цвета фона из telegram */
+            max-width: 400px;  /* Ширина не больше 400px */
+            max-height: 600px;   /* Высота не больше 600px */
+            height: 80vh;        /* Высота — 80% от высоты экрана (можно менять) */
+            overflow-y: auto;    /* Добавляем скролл, если контент не помещается */
+            border-radius: 12px;
         }
     </style>
 </head>
@@ -30,7 +35,7 @@
         <input type="text" class="cen" id="inp_phone">
         <input type="text" class="cen" id="inp_email">
         <button onclick="close_web()" class="cen">click</button>
-        <h6 class="error" id="err"></h6>
+        <h6 class="error" id="err">t</h6>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключение функций telegram-->
     <script>
@@ -43,16 +48,19 @@
         }
 
         function close_web() {
-            let pr = document.getElementById('input_name').value;
+            let pr = document.getElementById('inp_name').value;
             if(pr == '' || pr.includes(' ')) {
+                document.getElementById('err').value = 'Error name;';
                 return;
             }
-            let pr2 = document.getElementById('input_phone').value;
+            let pr2 = document.getElementById('inp_phone').value;
             if(pr2 == '' || !pr2.includes('+')) {
+                document.getElementById('err').value = 'Error phone;';
                 return;
             }
-            let pr3 = document.getElementById('input_email').value;
+            let pr3 = document.getElementById('inp_email').value;
             if(pr3 == '' || !pr3.includes('@') || !pr3.includes('.')) {
+                document.getElementById('err').value = 'Error email;';
                 return;
             }
 
