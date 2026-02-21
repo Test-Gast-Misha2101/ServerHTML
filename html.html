@@ -55,9 +55,10 @@
                     inp_email: inp_email
                 }; // json
                 tg.sendData(JSON.stringify(data)); // переводим в 1 строку
-                //tg.close(); // Закрываем telegram
+                tg.close(); // Закрываем telegram
             } // Обработка кнопки
         </script>
     </div>
 </body>
 </html>
+
