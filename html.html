@@ -10,11 +10,13 @@
         let tg = window.Telegram.WebApp; // Телеграмм функции
         tg.expand = false;
         tg.ready();
-        tg.enableClosingConfirmation()
 
         function registr() {
             document.getElementById('Menu').style.display = 'none';
             document.getElementById('reg').style.display = 'block';
+            tg.expand = false;
+            document.body.style.maxHeight = '400px';
+            document.body.style.height = 'auto';
         }
 
         function close_web() {
