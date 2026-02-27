@@ -9,9 +9,11 @@
     <script>
         let tg = window.Telegram.WebApp; // Телеграмм функции
         tg.expand = false;
-        tg.ready();
-        console.log('i')
-        console.error('y')
+        setTimeout(update, 0);
+        function update() {
+            tg.ready();
+            setTimeout(update, 100)
+        }
 
         function registr() {
             document.getElementById('Menu').style.display = 'none';
