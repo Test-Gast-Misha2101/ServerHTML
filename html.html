@@ -22,7 +22,7 @@
         <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключение функций telegram-->
         <script>
             let tg = window.Telegram.WebApp; // Телеграмм функции
-            tg.expand(); // Открыть на весь экран
+            tg.expand = false;
 
             function registr() {
                 document.getElementById('Menu').style.display = 'none';
