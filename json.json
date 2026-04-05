@@ -1,8 +1,8 @@
 {
   "pr1": {
-    "act": true,
+    "act": false,
     "config": {
-      "print": "Hi"
+      "print": "H1"
     }
   }
 }
